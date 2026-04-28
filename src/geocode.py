@@ -11,7 +11,7 @@ headers = {
     "Accept": "application/vnd.github+json"
 }
 
-users = pd.read_csv("data/users.csv")
+users = pd.read_csv("data/2011_users.csv")
 
 results = []
 
@@ -25,17 +25,13 @@ for username in users["login"]:
         results.append({
             "login": data["login"],
             "name": data.get("name"),
-            "company": data.get("company"),
-            "location": data.get("location"),
-            "followers": data.get("followers"),
-            "public_repos": data.get("public_repos"),
-            "created_at": data.get("created_at")
+            "location": data.get("location")
         })
 
     # time.sleep(0.5)
 
 df = pd.DataFrame(results)
-# df.to_csv("github_profiles.csv", index=False)
+# df.to_csv("2011_users_geocoded.csv", index=False)
 print(df.head())
 
 # geo = Nominatim(user_agent="gh-study")
